@@ -1,10 +1,16 @@
 package voting.process;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
+
+import com.mysql.jdbc.integration.c3p0.MysqlConnectionTester;
+
+import Implement.MysqlConnecter;
+import Implement.ParserReviewData;
+import Util.CsvFileController;
 
 /**
  * 
@@ -12,36 +18,14 @@ import java.sql.Statement;
  *
  */
 public class VotingProcess {
-    private static String driverName = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost/qt";
-    private static String user = "root";
-    private static String pass = "hirao";
+	public static ResultSet result;
+	
 	public static void main(String[] args) throws SQLException {
-    	String selectAll = "SELECT * FROM Review";
-        Connection con = VotingProcess.getConnection();
-        Statement stmt = con.createStatement();
-        ResultSet result = stmt.executeQuery(selectAll);
-        int i = 0;
-        while (result.next() && i < 10) {
-            System.out.println(result.getInt(1) + "\t" + result.getString(8));
-            i++;
-        }
+		// File path perser
+		Scanner inputStream = new CsvFileController(args[0]).getScanner();
+		
+		// Parse
+		new ParserReviewData().execute(result);
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-    public static Connection getConnection() {
-        Connection con = null;
-        try {
-            Class.forName(driverName);
-            con = DriverManager.getConnection(url,user,pass);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return con;
-    }
 }

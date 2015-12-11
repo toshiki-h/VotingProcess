@@ -9,39 +9,38 @@ import java.util.List;
  *
  */
 public class Reviewer {
-	private String reviewerId;
+	private int reviewerId;
 	private List<String> path;
-	
-	Reviewer(String id){
+
+	Reviewer(String id) {
 		this.setReviewerId(id);
 		this.path = new ArrayList<String>();
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	public String getReviewerId() {
+	public int getReviewerId() {
 		return reviewerId;
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 */
 	private void setReviewerId(String id) {
-		this.reviewerId = id;
+		this.reviewerId = Integer.parseInt(id);
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	public String getPath(int i) {
-		String p = this.path.get(i);
-		return p;
+	public List<String> getPath() {
+		return this.path;
 	}
-	
+
 	/**
 	 * 
 	 * @param p
