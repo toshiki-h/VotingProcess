@@ -7,8 +7,8 @@ public class FilePath {
 	private int reviewId;
 	private List<String> pathList;
 	
-	FilePath(String rId){
-		reviewId = Integer.parseInt(rId);
+	FilePath(int rId){
+		reviewId = rId;
 		pathList = new ArrayList<String>();
 	}
 	
@@ -16,7 +16,7 @@ public class FilePath {
 		return reviewId;
 	}
 	
-	public void setPathList(String path){
+	protected void setFilePath(String path){
 		pathList.add(path);
 	}
 	

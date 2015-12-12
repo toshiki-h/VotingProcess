@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import Implement.MysqlConnecter;
-import Implement.ParserReviewData;
+import Implement.ParseReviewDB;
 import Util.CsvFileController;
 import junit.framework.TestCase;
 

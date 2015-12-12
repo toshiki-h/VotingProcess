@@ -7,16 +7,17 @@ import junit.framework.TestCase;
 public class FilePathListTest extends TestCase {
 
 	public void testFilePathList() {
-		FilePath filePath = new FilePath("2");
-		filePath.setPathList("/src/main/java");
-		filePath.setPathList("/src/main/test");
-		
+		FilePath filePath = new FilePath(2);
 		FilePathList filePathList = new FilePathList();
-		filePathList.setFilePath(filePath);
-		List<String> actualList = filePathList.getFilePath(filePath);
+		filePathList.setFilePathClass(2, filePath);
+		filePathList.setFilePath(2, "/src/main/java");
+		filePathList.setFilePath(2, "/src/main/test");
+		filePathList.setFilePath(2, "/src/main/test");
+		List<String> actualList = filePathList.getFilePath(2);
 		assertEquals(2,filePathList.getFilePathId(filePath));
 		assertEquals("/src/main/java", actualList.get(0));
 		assertEquals("/src/main/test", actualList.get(1));
+		assertEquals(actualList.size(), 2);
 	}
 
 }

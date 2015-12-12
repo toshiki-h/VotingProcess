@@ -3,22 +3,39 @@ package Implement;
 import java.util.List;
 
 public class FilePathList {
-	private FilePath[] filePath;
+	private FilePath[] filePathList;
 	
 	FilePathList() {
 		//TODO if [100000] is over, you have to expand this value
-		filePath = new FilePath[100000];
+		filePathList = new FilePath[100000];
 	}
 	
-	public void setFilePath(FilePath fPath){
-		filePath[fPath.getReviewId()] = fPath;
+	public void setFilePath(int reviewId, String path){
+		if(filePathList[reviewId].getPathList().contains(path) == false){
+			filePathList[reviewId].setFilePath(path);
+		}
+	}
+	
+	public void setFilePathClass(int reviewId, FilePath filePath){
+		filePathList[reviewId] = filePath;
 	}
 	
 	public int getFilePathId(FilePath fPath){
-		return filePath[fPath.getReviewId()].getReviewId();
+		return filePathList[fPath.getReviewId()].getReviewId();
 	}
 	
-	public List<String> getFilePath(FilePath fPath){
-		return filePath[fPath.getReviewId()].getPathList();
+	public List<String> getFilePath(int reviewId){
+		return filePathList[reviewId].getPathList();
+	}
+	
+	public boolean isFilePathCalss(int reviewId){
+		if (filePathList[reviewId] != null){
+			return true;
+		}
+		return false;
+	}
+	
+	public FilePath getFilePathClass(int reviewId){
+		return filePathList[reviewId];
 	}
 }
