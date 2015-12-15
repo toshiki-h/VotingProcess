@@ -38,7 +38,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double actual = similarityScoreMethod.longestCommonSuffix(currentPath, pastPath);
 		double expected = 2;
 		assertEquals(expected, actual);
-		
+
 		String currentPath2 = "src/imports/undo/undo.pro";
 		String pastPath2 = "tests/auto/undo/do.pro";
 		SimilarityScoreMethod similarityScoreMethod2 = new SimilarityScoreMethod();
@@ -62,7 +62,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected2 = 1;
 		assertEquals(expected2, actual2);
 	}
-	
+
 	public void testValidLongestCommonSuffix3() {
 		String currentPath = "";
 		String pastPath = "tests/auto/undo/undo.pro";
@@ -90,42 +90,41 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected = 3;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubsequence2() {
-		String currentPath = "xxx/bbb/ccc/ddd/eee/eee/fff/ggg/hhh.";
-		String pastPath = "xxx/ccc/zzz/eee/fff/mmm";
+		String currentPath = "xxx/bbb/ccc/ddd/eee/";
+		String pastPath = "xxx/zzz/eee/eee/fff/mmm/hhh";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubsequence(currentPath, pastPath);
+		double expected = 2;
+		assertEquals(expected, actual);
+	}
+
+	public void testLongestCommonSubsequence3() {
+		String currentPath = "xxx/bbb/ccc/ddd/eee/fff/ggg/eee";
+		String pastPath = "xxx/ccc/zzz/eee/ghg/eee/ggg/mmm";
 		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
 		double actual = similarityScoreMethod.longestCommonSubsequence(currentPath, pastPath);
 		double expected = 4;
 		assertEquals(expected, actual);
 	}
-	
-	public void testLongestCommonSubsequence3() {
-		String currentPath = "xxx/bbb/ccc/ddd/eee/eee/fff/ggg/hhh.";
-		String pastPath = "xxx/ccc/zzz/eee/ghg/eee/fff/mmm";
-		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
-		double actual = similarityScoreMethod.longestCommonSubsequence(currentPath, pastPath);
-		double expected = 5;
-		assertEquals(expected, actual);
-	}
-	
+
 	public void testLongestCommonSubsequence4() {
 		String currentPath = "xxx/ccc/zzz/eee/ghg/eee/fff/mmm";
 		String pastPath = "";
 		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
 		double actual = similarityScoreMethod.longestCommonSubsequence(currentPath, pastPath);
-		double expected = 5;
+		double expected = 0;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubsequence5() {
-		String currentPath = "xxx/ccc/zzz/eee/ghg/eee/fff/mmm/eee";
-		String pastPath = "xxx/ccc/zzz/eee/ghg/eee/fff/mmm";
+		String pastPath = "xxx/ccc/zzz/eee/eee/eee/ggg";
+		String currentPath = "xxx/ccc/zzz/eee/ggg/eee";
 		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
 		double actual = similarityScoreMethod.longestCommonSubsequence(currentPath, pastPath);
 		double expected = 5;
 		assertEquals(expected, actual);
 	}
-
 
 }

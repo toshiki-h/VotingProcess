@@ -21,7 +21,7 @@ public class ReviewersList {
 	}
 
 	public boolean isReviewersList(int authorId) {
-		System.out.println("result"+authorId);
+		System.out.println("result" + authorId);
 		if (reviewersList[authorId] != null) {
 			return true;
 		}

@@ -12,7 +12,7 @@ public class ParseReviewDB {
 	private String selectQuery;
 	private String projectName;
 	private SkippingReviewersList skippingReviewersList;
-	
+
 	public ParseReviewDB() {
 		skippingReviewersList = new SkippingReviewersList();
 	}
@@ -56,13 +56,13 @@ public class ParseReviewDB {
 		return authorList;
 	}
 
-	//TODO konosyori atodeha?
-	//TODO reviewresList no index ha authorId da.
+	// TODO konosyori atodeha?
+	// TODO reviewresList no index ha authorId da.
 	public void updateReviewersExpertness(int reviewId, List<String> authorList, ReviewersList reviewersList,
 			FilePathList filePathList) {
 		for (String author : authorList) {
-			//Validation of skip reviewers list.
-			if (skippingReviewersList.isSkipReviewers(author)){
+			// Validation of skip reviewers list.
+			if (skippingReviewersList.isSkipReviewers(author)) {
 				continue;
 			}
 			int authorId = Integer.parseInt(author);
@@ -78,22 +78,23 @@ public class ParseReviewDB {
 		}
 	}
 
-	public void calculateReviewersExpertness(int reviewId, List<String> authorList, ReviewersList reviewersList, FilePathList filePathList) {
+	public void calculateReviewersExpertness(int reviewId, List<String> authorList, ReviewersList reviewersList,
+			FilePathList filePathList) {
 		for (String author : authorList) {
 			int authorId = Integer.parseInt(author);
 			double resultScore = 0;
-			//Validation of skip reviewers list.
-			if (skippingReviewersList.isSkipReviewers(author)){
+			// Validation of skip reviewers list.
+			if (skippingReviewersList.isSkipReviewers(author)) {
 				continue;
 			}
 			if (reviewersList.isReviewersList(authorId)) {
 				Reviewer reviewer = reviewersList.getReveiwClass(authorId);
 				List<String> pastReviewedPathList = reviewer.getPathList();
 				List<String> currentReviewedPathList = filePathList.getFilePath(reviewId);
-				for (String currentPath : currentReviewedPathList){
+				for (String currentPath : currentReviewedPathList) {
 					int ctMethod = 0;
 					double tmpScore = 0;
-					for(String pastPath : pastReviewedPathList){
+					for (String pastPath : pastReviewedPathList) {
 						SimilarityScoreMethod simMethod = new SimilarityScoreMethod();
 						tmpScore = simMethod.longestCommonPrefix(currentPath, pastPath);
 						tmpScore = simMethod.longestCommonSuffix(currentPath, pastPath);
@@ -103,9 +104,8 @@ public class ParseReviewDB {
 					}
 					resultScore = tmpScore / ctMethod;
 				}
-			}
-			else{
-				//TODO error procedure
+			} else {
+				// TODO error procedure
 				;
 			}
 		}
