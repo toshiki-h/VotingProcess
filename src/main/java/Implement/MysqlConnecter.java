@@ -18,9 +18,10 @@ public class MysqlConnecter {
 	private static String pass = "hirao";
 	private final Connection con;
 
-	public MysqlConnecter() throws SQLException{
+	public MysqlConnecter() throws SQLException {
 		con = this.getConnection();
 	}
+
 	/**
 	 * 
 	 * @return
@@ -37,8 +38,8 @@ public class MysqlConnecter {
 		}
 		return con;
 	}
-	
-	public ResultSet selectQuery(String selectQuery) throws SQLException{
+
+	public ResultSet selectQuery(String selectQuery) throws SQLException {
 		Statement stmt = con.createStatement();
 		return stmt.executeQuery(selectQuery);
 	}

@@ -1,20 +1,38 @@
 package Implement;
 
-import java.util.List;
+import Constants.ConstantValue;
 
 public class ReviewersList {
 	public Reviewer[] reviewersList;
-	
-	ReviewersList(){
-		//TODO if [10000000] is over, you have to expand this value
-		reviewersList = new Reviewer[10000000];
+
+	ReviewersList() {
+		// TODO if [10000000] is over, you have to expand this value
+		reviewersList = new Reviewer[ConstantValue.REVIEWERS_LIST];
 	}
-	
-	public void setReviewer(Reviewer reviewer){
-		reviewersList[reviewer.getReviewerId()] = reviewer;
+
+	public void setReviewerClass(int authorId, Reviewer reviewer) {
+		System.out.println(authorId + ":" + reviewer);
+		reviewersList[authorId] = reviewer;
 	}
-	
-	public List<String> getPathList(Reviewer reviewer){
-		return reviewersList[reviewer.getReviewerId()].getPath();
+
+	public void setReviewedPath(int authorId, String path) {
+		if (reviewersList[authorId].getPathList().contains(path) == false) {
+			reviewersList[authorId].setFilePath(path);
+		}
+	}
+
+	public boolean isReviewersList(int authorId) {
+		if (reviewersList[authorId] != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public Reviewer getReveiwClass(int authorId) {
+		if (this.isReviewersList(authorId) == true) {
+			return reviewersList[authorId];
+		} else {
+			return null;
+		}
 	}
 }

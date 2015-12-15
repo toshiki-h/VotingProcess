@@ -37,7 +37,7 @@ public class Reviewer {
 	 * 
 	 * @return
 	 */
-	public List<String> getPath() {
+	public List<String> getPathList() {
 		return this.path;
 	}
 
@@ -45,7 +45,7 @@ public class Reviewer {
 	 * 
 	 * @param p
 	 */
-	public void setPath(String p) {
+	public void setFilePath(String p) {
 		this.path.add(p);
 	}
 }

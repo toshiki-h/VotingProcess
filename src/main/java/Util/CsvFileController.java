@@ -16,12 +16,10 @@ public class CsvFileController {
 			inputStream = new Scanner(file);
 			// hashNext() loops line-by-line
 			/**
-			while (inputStream.hasNext()) {
-				// read single line, put in string
-				String data = inputStream.next();
-				System.out.println(data);
-			}
-			**/
+			 * while (inputStream.hasNext()) { // read single line, put in
+			 * string String data = inputStream.next();
+			 * System.out.println(data); }
+			 **/
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();

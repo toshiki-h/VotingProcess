@@ -32,10 +32,10 @@ public class ReviewerTest extends TestCase {
 		String expectedPath2 = "/src/main/test/java/testApp.java";
 		String expectedPath3 = "/README.md";
 
-		reviewer.setPath(expectedPath1);
-		reviewer.setPath(expectedPath2);
-		reviewer.setPath(expectedPath3);
-		List<String> actual = reviewer.getPath();
+		reviewer.setFilePath(expectedPath1);
+		reviewer.setFilePath(expectedPath2);
+		reviewer.setFilePath(expectedPath3);
+		List<String> actual = reviewer.getPathList();
 
 		assertEquals(expectedPath1, actual.get(0));
 		assertEquals(expectedPath2, actual.get(1));
