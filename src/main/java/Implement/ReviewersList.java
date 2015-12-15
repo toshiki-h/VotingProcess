@@ -11,7 +11,6 @@ public class ReviewersList {
 	}
 
 	public void setReviewerClass(int authorId, Reviewer reviewer) {
-		System.out.println(authorId + ":" + reviewer);
 		reviewersList[authorId] = reviewer;
 	}
 
@@ -22,6 +21,7 @@ public class ReviewersList {
 	}
 
 	public boolean isReviewersList(int authorId) {
+		System.out.println("result"+authorId);
 		if (reviewersList[authorId] != null) {
 			return true;
 		}

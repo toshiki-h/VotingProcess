@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Calculator.SimilarityScoreMethod;
+import Validation.SkippingReviewersList;
 
 public class ParseReviewDB {
-
 	private String selectQuery;
 	private String projectName;
+	private SkippingReviewersList skippingReviewersList;
+	
+	public ParseReviewDB() {
+		skippingReviewersList = new SkippingReviewersList();
+	}
 
 	public void execute(FilePathList filePathList) throws SQLException {
 		this.parserComment(filePathList);
@@ -56,6 +61,10 @@ public class ParseReviewDB {
 	public void updateReviewersExpertness(int reviewId, List<String> authorList, ReviewersList reviewersList,
 			FilePathList filePathList) {
 		for (String author : authorList) {
+			//Validation of skip reviewers list.
+			if (skippingReviewersList.isSkipReviewers(author)){
+				continue;
+			}
 			int authorId = Integer.parseInt(author);
 			if (reviewersList.isReviewersList(authorId) == false) {
 				Reviewer reviewer = new Reviewer(author);
@@ -73,6 +82,10 @@ public class ParseReviewDB {
 		for (String author : authorList) {
 			int authorId = Integer.parseInt(author);
 			double resultScore = 0;
+			//Validation of skip reviewers list.
+			if (skippingReviewersList.isSkipReviewers(author)){
+				continue;
+			}
 			if (reviewersList.isReviewersList(authorId)) {
 				Reviewer reviewer = reviewersList.getReveiwClass(authorId);
 				List<String> pastReviewedPathList = reviewer.getPathList();
