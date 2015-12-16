@@ -79,7 +79,49 @@ public class SimilarityScoreMethodTest extends TestCase {
 		assertEquals(expected2, actual2);
 	}
 
-	public void testLongestCommonSubstring() {
+	public void testLongestCommonSubstring0() {
+		String currentPath = "a/b/c/d/e/f/g/h/i/j/k/l";
+		String pastPath = "c/a/b/c/d/e/d/e/f/g/h/i/j/k/l";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubstring(currentPath, pastPath);
+		double expected = 9;
+		assertEquals(expected, actual);
+	}
+	
+	public void testLongestCommonSubstring1() {
+		String currentPath = "a/b/c/d/e/f/g";
+		String pastPath = "c/a/b/e/d/e/f";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubstring(currentPath, pastPath);
+		double expected = 3;
+		assertEquals(expected, actual);
+	}
+	
+	public void testLongestCommonSubstring2() {
+		String currentPath = "";
+		String pastPath = "";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubstring(currentPath, pastPath);
+		double expected = 0;
+		assertEquals(expected, actual);
+	}
+	
+	public void testLongestCommonSubstring3() {
+		String currentPath = "e/f";
+		String pastPath = "";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubstring(currentPath, pastPath);
+		double expected = 0;
+		assertEquals(expected, actual);
+	}
+	
+	public void testLongestCommonSubstring4() {
+		String currentPath = "";
+		String pastPath = "a/b/c";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonSubstring(currentPath, pastPath);
+		double expected = 0;
+		assertEquals(expected, actual);
 	}
 
 	public void testLongestCommonSubsequence1() {
