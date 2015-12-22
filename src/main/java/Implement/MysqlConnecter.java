@@ -16,7 +16,7 @@ public class MysqlConnecter {
 	private static String url = "jdbc:mysql://localhost/qt";
 	private static String user = "root";
 	private static String pass = "hirao";
-	private final Connection con;
+	private Connection con;
 
 	public MysqlConnecter() throws SQLException {
 		con = this.getConnection();

@@ -21,7 +21,7 @@ public class ReviewersList {
 	}
 
 	public boolean isReviewersList(int authorId) {
-		System.out.println("result" + authorId);
+		// System.out.println("result" + authorId);
 		if (reviewersList[authorId] != null) {
 			return true;
 		}
@@ -34,5 +34,17 @@ public class ReviewersList {
 		} else {
 			return null;
 		}
+	}
+
+	public void countCorrectness(int authorId, boolean b) {
+		if (b == true) {
+			this.reviewersList[authorId].countCorrectCt();
+		} else if (b == false) {
+			this.reviewersList[authorId].countIncorrectCt();
+		}
+	}
+
+	public void setExpertiseScore(int authorId, double expScore) {
+		this.reviewersList[authorId].setExpertness(expScore);
 	}
 }

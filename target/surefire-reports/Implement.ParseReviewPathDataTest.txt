@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: Implement.ParseReviewPathDataTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.121 sec <<< FAILURE!
+testExecute(Implement.ParseReviewPathDataTest)  Time elapsed: 0.114 sec  <<< ERROR!
+java.lang.NullPointerException
+	at Implement.ParseReviewPathData.setReviewPathData(ParseReviewPathData.java:32)
+	at Implement.ParseReviewPathData.execute(ParseReviewPathData.java:21)
+	at Implement.ParseReviewPathDataTest.testExecute(ParseReviewPathDataTest.java:11)

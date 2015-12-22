@@ -2,17 +2,23 @@ package Calculator;
 
 public class SimilarityScoreMethod {
 
-	public int longestCommonPrefix(String currentPath, String pastPath) {
+	public double longestCommonPrefix(String currentPath, String pastPath) {
 		String[] currentCompornents = currentPath.split("/");
 		String[] pastCompornents = pastPath.split("/");
-		int index = 0;
-		while (currentCompornents[index].equals(pastCompornents[index])) {
-			index++;
+		int min = Math.min(currentCompornents.length, pastCompornents.length);
+		int i = 0;
+		int maxLen = 0;
+		// System.out.println(currentPath+"()"+pastPath);
+		for (i = 0; i < min; i++) {
+			if (currentCompornents[i].equals(pastCompornents[i]))
+				maxLen++;
+			else
+				break;
 		}
-		return index;
+		return maxLen;
 	}
 
-	public int longestCommonSuffix(String currentPath, String pastPath) {
+	public double longestCommonSuffix(String currentPath, String pastPath) {
 		String[] currentCompornents = currentPath.split("/");
 		String[] pastCompornents = pastPath.split("/");
 		int cIndex = currentCompornents.length - 1;
@@ -28,13 +34,12 @@ public class SimilarityScoreMethod {
 		return ctEquals;
 	}
 
-	public int longestCommonSubstring(String currentPath, String pastPath) {
+	public double longestCommonSubstring(String currentPath, String pastPath) {
 		String[] currentCompornents = currentPath.split("/");
 		String[] pastCompornents = pastPath.split("/");
-		// TODO length+1
 		int l1 = currentCompornents.length;
 		int l2 = pastCompornents.length;
-		if (l1 == 1 && l2 == 1 && (currentCompornents[0].equals("") || pastCompornents[0].equals(""))){
+		if (l1 == 1 && l2 == 1 && (currentCompornents[0].equals("") || pastCompornents[0].equals(""))) {
 			return 0;
 		}
 		int[][] table = new int[l1][l2];
@@ -55,14 +60,13 @@ public class SimilarityScoreMethod {
 				table[0][i] = 0;
 			}
 		}
-		
-		for (int i = 1;i < l1;i++){
-			for (int j = 1;j < l2;j++){
-				if(currentCompornents[i].equals(pastCompornents[j])){
-					table[i][j] = table[i-1][j-1] + 1;
+
+		for (int i = 1; i < l1; i++) {
+			for (int j = 1; j < l2; j++) {
+				if (currentCompornents[i].equals(pastCompornents[j])) {
+					table[i][j] = table[i - 1][j - 1] + 1;
 					maxLen = (table[i][j] > maxLen) ? table[i][j] : maxLen;
-				}
-				else{
+				} else {
 					table[i][j] = 0;
 				}
 			}
@@ -70,7 +74,7 @@ public class SimilarityScoreMethod {
 		return maxLen;
 	}
 
-	public int longestCommonSubsequence(String currentPath, String pastPath) {
+	public double longestCommonSubsequence(String currentPath, String pastPath) {
 		String[] currentCompornents = currentPath.split("/");
 		String[] pastCompornents = pastPath.split("/");
 		int cIndex = currentCompornents.length + 1;

@@ -31,6 +31,15 @@ public class SimilarityScoreMethodTest extends TestCase {
 		assertEquals(expected, actual);
 	}
 
+	public void testValidLongestCommonPrefix4() {
+		String currentPath = "src/com/android/settings/Utils.java";
+		String pastPath = "src/com/android/settings/Utils.java";
+		SimilarityScoreMethod similarityScoreMethod = new SimilarityScoreMethod();
+		double actual = similarityScoreMethod.longestCommonPrefix(currentPath, pastPath);
+		double expected = 5;
+		assertEquals(expected, actual);
+	}
+
 	public void testValidLongestCommonSuffix1() {
 		String currentPath = "src/imports/undo/undo.pro";
 		String pastPath = "tests/auto/undo/undo.pro";
@@ -87,7 +96,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected = 9;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubstring1() {
 		String currentPath = "a/b/c/d/e/f/g";
 		String pastPath = "c/a/b/e/d/e/f";
@@ -96,7 +105,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected = 3;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubstring2() {
 		String currentPath = "";
 		String pastPath = "";
@@ -105,7 +114,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected = 0;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubstring3() {
 		String currentPath = "e/f";
 		String pastPath = "";
@@ -114,7 +123,7 @@ public class SimilarityScoreMethodTest extends TestCase {
 		double expected = 0;
 		assertEquals(expected, actual);
 	}
-	
+
 	public void testLongestCommonSubstring4() {
 		String currentPath = "";
 		String pastPath = "a/b/c";

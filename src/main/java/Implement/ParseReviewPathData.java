@@ -33,7 +33,7 @@ public class ParseReviewPathData {
 			// read single line, put in string
 			String data = inputStream.next();
 			String[] words = data.split(",");
-			System.out.println(words[0]);
+			// System.out.println(words[0]);
 			if (words[0].equals("path/app") == true) {
 				System.out.println(i + ":" + data);
 				continue;

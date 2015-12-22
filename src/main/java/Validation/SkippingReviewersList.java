@@ -10,6 +10,7 @@ public class SkippingReviewersList {
 		skipList = new ArrayList<String>();
 		// TODO you have to add any more skip id
 		skipList.add("-1");
+		skipList.add("1000049");
 	}
 
 	public boolean isSkipReviewers(String author) {
