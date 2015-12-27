@@ -42,13 +42,12 @@ def IsVote(m): # (Regular expression)
 	p4 = re.compile(r'Patch Set [1-9]*: Workflow-1')
 	p5 = re.compile(r"Patch Set [1-9]*: Doesn'*t seem to work")
 	p6 = re.compile(r"Patch Set [1-9]*: I would prefer that you didn'*t merge this")
-	p7 = re.compile(r'Patch Set [1-9]*: No score')
 	# Score -2
 	p8 = re.compile(r'Patch Set [1-9]*: Do not merge') #
 	p9 = re.compile(r'Patch Set [1-9]*: Do not submit') #
 	p10 = re.compile(r'Patch Set [1-9]*: Major sanity problems found') #
 	p11 = re.compile(r'Patch Set [1-9]*: Fails') #
-	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m) or p5.match(m) or p6.match(m) or p7.match(m) or p8.match(m) or p9.match(m) or p10.match(m) or p11.match(m):
+	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m) or p5.match(m) or p6.match(m) or p8.match(m) or p9.match(m) or p10.match(m) or p11.match(m):
 		return -1
 
     # Score 0
