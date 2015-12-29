@@ -86,11 +86,10 @@ def IsCorrectVoting(r, s, judge):
 def IsDecisionMaking(comment):
 	# Negative
 	pattern1 = re.compile(r'Patch Set 1: Abandoned') 					# "abandoned" about patchSet1
-	pattern2 = re.compile(r'Uploaded patch set [1-9]*') #
 	# Positive
 	pattern3 = re.compile(r'Change has been successfully cherry-picked')
 
-	if(pattern1.match(comment) or pattern2.match(comment)):
+	if(pattern1.match(comment)):
 		return -1
 	if(pattern3.match(comment)):
 		return 1
