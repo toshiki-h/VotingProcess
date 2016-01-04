@@ -19,7 +19,7 @@ from Utils import VoterFunctions
 ### main
 FMT = '%Y-%m-%d %H:%M:%S'
 index = 0
-print "Id,Status,Claster,AverageCorrectness,ReviewLen,ReviewLenPerVotes,NumOfVotes,NumOfComments"
+print "Id,Status,Claster,AverageCorrectness,MinCorrectness,ReviewLen,ReviewLenPerVotes,NumOfVotes,NumOfComments"
 for line in open(sys.argv[1], "r"):
     if index == 0:
         index = index + 1
@@ -29,12 +29,13 @@ for line in open(sys.argv[1], "r"):
     Id = words[0].strip()
     reviewers = words[1].strip()
     averageCorrectness = words[2].strip()
-    status = words[3].strip()
-    claster = words[4].strip()
+    minCorrectness = words[3].strip()
+    status = words[4].strip()
+    claster = words[5].strip()
 
 
     ### Access into MySQLdb
-    cnct = MySQLdb.connect(db="qt",user="root", passwd="hirao")
+    cnct = MySQLdb.connect(db="openstack",user="root", passwd="hirao")
     csr0 = cnct.cursor()
     csr1 = cnct.cursor()
     csr2 = cnct.cursor()
@@ -77,8 +78,8 @@ for line in open(sys.argv[1], "r"):
 
     #print Id,averageCorrectness,total,days,NumOfUpdated,NumOfVotes
     if NumOfVotes != 0:
-        print str(Id)+","+str(status)+","+str(claster)+","+str(averageCorrectness)+","+str(diff.total_seconds()/60/60/24)+","+str((diff.total_seconds()/60/60/24)/NumOfVotes)+","+str(NumOfVotes)+","+str(NumOfComments)
+        print str(Id)+","+str(status)+","+str(claster)+","+str(averageCorrectness)+","+str(minCorrectness)+","+str(diff.total_seconds()/60/60/24)+","+str((diff.total_seconds()/60/60/24)/NumOfVotes)+","+str(NumOfVotes)+","+str(NumOfComments)
     else:
-        print str(Id)+","+str(status)+","+str(claster)+","+str(averageCorrectness)+","+str(diff.total_seconds()/60/60/24)+","+str(0)+","+str(NumOfVotes)+","+str(NumOfComments)
+        print str(Id)+","+str(status)+","+str(claster)+","+str(averageCorrectness)+","+str(minCorrectness)+","+str(diff.total_seconds()/60/60/24)+","+str(0)+","+str(NumOfVotes)+","+str(NumOfComments)
 
     #print str(lastWrittenOn)+"****"+str(createdOn)+"****"+str(updated)
